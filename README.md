@@ -5,7 +5,7 @@ This is a simplified SMPP client lib for sending or receiving smses through [SMP
 
 In addition to the client, this lib also contains an encoder for converting UTF-8 text to the GSM 03.38 encoding, and a socket wrapper. The socket wrapper provides connection pool, IPv6 and timeout monitoring features on top of PHP's socket extension.
 
-This lib has changed significantly from it's first release, which required namespaces and included some worker components. You'll find that release at [1.0.1-namespaced](https://github.com/onlinecity/php-smpp/tree/1.0.1-namespaced)
+This lib  built based on [php-smpp](https://github.com/onlinecity/php-smpp)
 
 This lib requires the [sockets](http://www.php.net/manual/en/book.sockets.php) PHP-extension, and is not supported on Windows. A [windows-compatible](https://github.com/onlinecity/php-smpp/tree/windows-compatible) version is also available.
 
@@ -40,7 +40,7 @@ $smpp->bindTransmitter("USERNAME","PASSWORD");
 //SmppClient::$sms_registered_delivery_flag = SMPP::REG_DELIVERY_SMSC_BOTH;
 
 // Prepare message
-$message = 'H€llo world';
+$message = 'Hello world';
 $encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
 $from = new SmppAddress('SMPP Test',SMPP::TON_ALPHANUMERIC);
 $to = new SmppAddress(4512345678,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
@@ -115,9 +115,6 @@ There are three built-in methods to send Concatenated SMS (csms); CSMS_16BIT_TAG
 **Is this lib compatible with PHP 5.2.x ?**  
 It's tested on PHP 5.3, but is known to work with 5.2 as well.
 
-**Can it run on windows?**  
-It requires the sockets extension, which is available on windows, but is incomplete. Use the [windows-compatible](https://github.com/onlinecity/php-smpp/tree/windows-compatible) version instead, which uses fsockopen and stream functions.
-
 **Why am I not seeing any debug output?**  
 Remember to implement a debug callback for SocketTransport and SmppClient to use. Otherwise they default to [error_log](http://www.php.net/manual/en/function.error-log.php) which may or may not print to screen. 
 
@@ -138,8 +135,3 @@ Many service providers can give you a demo account, but you can also use the [lo
 
 **I have an issue that not mentioned here, what do I do?**  
 Please obtain full debug information, and open an issue here on github. Make sure not to include the Send PDU hex-codes of the BindTransmitter call, since it will contain your username and password. Other hex-output is fine, and greatly appeciated. Any PHP Warnings or Notices could also be important. Please include information about what SMPP server you are connecting to, and any specifics.
-=======
-smpp-client-php
-===============
-
-SMPP Client using php
