@@ -138,3 +138,8 @@ Many service providers can give you a demo account, but you can also use the [lo
 
 **I have an issue that not mentioned here, what do I do?**  
 Please obtain full debug information, and open an issue here on github. Make sure not to include the Send PDU hex-codes of the BindTransmitter call, since it will contain your username and password. Other hex-output is fine, and greatly appeciated. Any PHP Warnings or Notices could also be important. Please include information about what SMPP server you are connecting to, and any specifics.
+=======
+smpp-client-php
+===============
+
+SMPP Client using php
