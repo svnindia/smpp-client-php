@@ -97,7 +97,7 @@ class SmppClient
 		$this->pdu_queue=array();
 		
 		$this->transport = $transport;
-		$this->debugHandler = $debugHandler ? $debugHandler : 'error_log';
+		$this->debugHandler = $debugHandler ? $debugHandler : 'print_r';
 		$this->mode = null;
 	}
 	
