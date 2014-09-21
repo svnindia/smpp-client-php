@@ -22,13 +22,16 @@ $smpp->bindTransmitter("test","pass");
 //SmppClient::$sms_registered_delivery_flag = SMPP::REG_DELIVERY_SMSC_BOTH;
 
 // Prepare message
-$message = 'Demo Text';
-$encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
 $from = new SmppAddress('Demo',SMPP::TON_ALPHANUMERIC);
 $to = new SmppAddress(919942012345,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
+for($i=0;$i<10;$i++) {
+  $message = 'Demo Text ABC '.$i;
+  $encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
 
-// Send
-$smpp->sendSMS($from,$to,$encodedMessage,$tags);
+  // Send
+  $msgid = $smpp->sendSMS($from,$to,$encodedMessage,$tags);
+  print 'message ref id: '.$msgid;
+}
 
 // Close connection
 $smpp->close();
