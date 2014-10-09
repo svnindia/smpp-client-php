@@ -24,10 +24,10 @@ $smpp->bindTransmitter("demouser","demopass");
 // Prepare message
 
 $tags = array();
-$from = new SmppAddress('debug',SMPP::TON_ALPHANUMERIC);
-$to = new SmppAddress(919942012345,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
+$from = new SmppAddress('SMSIND',SMPP::TON_ALPHANUMERIC);
+$to = new SmppAddress(9942012345,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
 for($i=0;$i<1;$i++) {
-  $message = 'Dear Reader, Congratulations! You have successfully applied for this job.';
+  $message = 'Hello sms from Mr.ABC'.$i.'.';
 //$encodedMessage = $message;
   $encodedMessage = utf8_encode($message);
 //  $encodedMessage = GsmEncoder::utf8_to_gsm0338($message);
