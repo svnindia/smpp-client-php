@@ -5,7 +5,7 @@ require_once 'sockettransport.class.php';
 
 // Construct transport and client
 $transport = new SocketTransport(array('127.0.0.1'),2775);
-$transport->setRecvTimeout(10000);
+$transport->setRecvTimeout(100000);
 $smpp = new SmppClient($transport);
 
 // Activate binary hex-output of server interaction
@@ -25,7 +25,7 @@ $smpp->bindTransmitter("demouser","demopass");
 
 $tags = array();
 $from = new SmppAddress('SMSIND',SMPP::TON_ALPHANUMERIC);
-$to = new SmppAddress(9942012345,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
+$to = new SmppAddress(919942012345,SMPP::TON_INTERNATIONAL,SMPP::NPI_E164);
 for($i=0;$i<1;$i++) {
   $message = 'Hello sms from Mr.ABC'.$i.'.';
 //$encodedMessage = $message;
